@@ -1,8 +1,21 @@
+const ATMDeposit = ({ onChange }) => {
+  return (
+    <label className="label huge">
+      Deposit:
+      <input type="number" onChange={onChange}/>
+      <input type="submit" />
+    </label>
+  );
+};
+
 const Account = () => {
+  const handleChange = event => {};
+  const handleSubmit = event => {};
+
   return (
     <form>
-      <input type="number" />
-      <input type="submit" />
+      <ATMDeposit onChange={handleChange}>Deposit</ATMDeposit>
+      <h2>Account Balance</h2>
     </form>
   );
 };
