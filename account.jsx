@@ -14,12 +14,17 @@ const Account = () => {
     console.log(`handleChange ${event.target.value}`);
     setAccountState(event.target.value);
   };
-  const handleSubmit = event => {};
+
+  // Only handles one deposit / one submit.
+  const handleSubmit = event => {
+    alert(`Account total = ${accountState}`);
+    event.preventDefault();
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <ATMDeposit onChange={handleChange}>Deposit</ATMDeposit>
-      <h2>Account Balance</h2>
+      <h2>Account Balance {accountState}</h2>
     </form>
   );
 };
