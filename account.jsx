@@ -9,7 +9,11 @@ const ATMDeposit = ({ onChange }) => {
 };
 
 const Account = () => {
-  const handleChange = event => {};
+  const [accountState, setAccountState] = React.useState();
+  const handleChange = event => {
+    console.log(`handleChange ${event.target.value}`);
+    setAccountState(event.target.value);
+  };
   const handleSubmit = event => {};
 
   return (
