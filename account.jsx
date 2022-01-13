@@ -10,8 +10,8 @@ const ATMDeposit = ({ onChange }) => {
 
 const Account = () => {
   let transactionState = 0;
-  let totalState = 0;
-  let status = `Account Balance $Zero`;
+  const [totalState, setTotalState] = React.useState();
+  let status = `Account Balance $ ${totalState}`;
   const handleChange = event => {
     console.log(`handleChange ${event.target.value}`);
     transactionState = Number(event.target.value);
@@ -20,8 +20,6 @@ const Account = () => {
   // Only handles one deposit / one submit.
   const handleSubmit = event => {
     totalState += transactionState;
-    status = `Account Balance $ ${totalState}`;
-    document.getElementById('total').innerHTML = status;
     event.preventDefault();
   };
 
