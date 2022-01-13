@@ -9,22 +9,26 @@ const ATMDeposit = ({ onChange }) => {
 };
 
 const Account = () => {
-  const [accountState, setAccountState] = React.useState();
+  let transactionState = 0;
+  let totalState = 0;
+  let status = `Account Balance $Zero`;
   const handleChange = event => {
     console.log(`handleChange ${event.target.value}`);
-    setAccountState(event.target.value);
+    transactionState = Number(event.target.value);
   };
 
   // Only handles one deposit / one submit.
   const handleSubmit = event => {
-    alert(`Account total = ${accountState}`);
+    totalState += transactionState;
+    status = `Account Balance $ ${totalState}`;
+    document.getElementById('total').innerHTML = status;
     event.preventDefault();
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <ATMDeposit onChange={handleChange}>Deposit</ATMDeposit>
-      <h2>Account Balance {accountState}</h2>
+      <h2 id="total">{status}</h2>
     </form>
   );
 };
